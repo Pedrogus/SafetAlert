@@ -26,7 +26,7 @@ public class AreaDeRiscoService {
         return null;
     }
 
-    public boolean atualizar(int id, String nome, boolean status) {
+    public boolean atualizar(int id, String nome, String localizacao, boolean status) {
         AreaDeRisco area = buscarPorId(id);
         if (area != null) {
             area.setNome(nome);

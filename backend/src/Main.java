@@ -1,4 +1,7 @@
-import menus.menuPessoa;
+import com.models.Alerta;
+import menus.MenuAlerta;
+import menus.MenuArea;
+import menus.MenuPessoa;
 import com.services.PessoaService;
 import com.services.AlertaService;
 import com.services.AreaDeRiscoService;
@@ -12,7 +15,9 @@ public class Main {
         AlertaService alertaService = new AlertaService();
         AreaDeRiscoService areaDeRiscoService = new AreaDeRiscoService();
 
-        menuPessoa menuPessoa = new menuPessoa(pessoaService, scanner);
+        MenuPessoa menuPessoa = new MenuPessoa(pessoaService, scanner);
+        MenuArea menuArea = new MenuArea(areaDeRiscoService);
+        MenuAlerta menuAlerta = new MenuAlerta(alertaService);
 
         int opcao;
 
@@ -21,7 +26,6 @@ public class Main {
             System.out.println("1. Gerenciar Pessoas");
             System.out.println("2. Gerenciar Áreas de Risco");
             System.out.println("3. Gerenciar Alertas");
-            System.out.println("4. Simular envio de alerta");
             System.out.println("0. Sair");
             System.out.print("Escolha uma opção: ");
             opcao = scanner.nextInt();
@@ -33,13 +37,10 @@ public class Main {
                     menuPessoa.exibir();
                     break;
                 case 2:
-                   // menuArea
+                    menuArea.exibir();
                     break;
                 case 3:
-                    // menuAlerta
-                    break;
-                case 4:
-                    // simularEnvioAlerta
+                    menuAlerta.exibir();
                     break;
                 case 0:
                     System.out.println("Encerrando o sistema.");
@@ -51,5 +52,7 @@ public class Main {
 
         scanner.close();
     }
+
+
 
     }
